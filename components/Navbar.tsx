@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { navLinks, clinicInfo } from "@/lib/data";
-import Button from "@/components/ui/LegacyButton";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,11 +12,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -25,114 +22,90 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">G</span>
-            </div>
-            <div className="hidden sm:block">
-              <p
-                className={`font-bold text-sm leading-tight ${
-                  isScrolled ? "text-slate-900" : "text-white"
-                }`}
-              >
-                Gouraha Dant
-              </p>
-              <p
-                className={`text-xs ${
-                  isScrolled ? "text-slate-500" : "text-white/70"
-                }`}
-              >
-                Chikitsalaya
-              </p>
-            </div>
-          </Link>
+    <header className="fixed inset-x-0 top-4 z-50 px-4">
+      <div
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 ${
+          isScrolled ? "glass shadow-lg" : "bg-white/40 backdrop-blur-xl border border-white/30"
+        }`}
+      >
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-hover text-white font-bold text-lg">
+            G
+          </span>
+          <span className="hidden sm:block leading-tight">
+            <span className="block font-bold text-slate-900 text-sm">Gouraha Dant</span>
+            <span className="block text-xs text-slate-500">Chikitsalaya</span>
+          </span>
+        </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+        {/* Desktop links */}
+        <nav className="hidden md:flex items-center gap-1">
+          {navLinks.map((l) => {
+            const active = pathname === l.href;
+            return (
               <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.href
-                    ? "text-primary font-semibold"
-                    : isScrolled
-                      ? "text-slate-700"
-                      : "text-white/90"
+                key={l.href}
+                href={l.href}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-primary/10 text-primary"
+                    : "text-slate-600 hover:text-primary"
                 }`}
               >
-                {link.label}
+                {l.label}
               </Link>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href={`tel:${clinicInfo.phoneLink}`}
-              className={`flex items-center gap-2 text-sm ${
-                isScrolled ? "text-slate-700" : "text-white"
-              }`}
-            >
-              <Phone size={16} />
-              {clinicInfo.phone}
-            </a>
-            <Button href="/book-appointment" size="sm">
-              Book Appointment
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            className={`md:hidden p-2 ${
-              isScrolled ? "text-slate-900" : "text-white"
-            }`}
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <a href={`tel:${clinicInfo.phoneLink}`} className="flex items-center gap-2 text-sm text-slate-600">
+            <Phone size={16} />
+            {clinicInfo.phone}
+          </a>
+          <Link
+            href="/book-appointment"
+            className="rounded-full bg-gradient-to-r from-accent to-accent-hover px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            Book Appointment
+          </Link>
         </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          className="md:hidden p-2 text-slate-900"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile drawer */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t shadow-lg">
-          <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
+        <div className="md:hidden mx-auto max-w-6xl mt-2 glass rounded-3xl p-5 shadow-xl">
+          <nav className="flex flex-col gap-2">
+            {navLinks.map((l) => (
               <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block py-2 text-slate-700 font-medium hover:text-primary"
+                key={l.href}
+                href={l.href}
+                className="rounded-xl px-4 py-3 text-slate-700 font-medium hover:bg-primary/10 hover:text-primary"
               >
-                {link.label}
+                {l.label}
               </Link>
             ))}
-            <a
-              href={`tel:${clinicInfo.phoneLink}`}
-              className="flex items-center gap-2 py-2 text-slate-700"
+            <Link
+              href="/book-appointment"
+              className="mt-2 rounded-xl bg-gradient-to-r from-accent to-accent-hover px-4 py-3 text-center font-semibold text-white"
             >
-              <Phone size={16} />
-              {clinicInfo.phone}
-            </a>
-            <Button href="/book-appointment" className="w-full mt-4">
               Book Appointment
-            </Button>
-          </div>
+            </Link>
+          </nav>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
