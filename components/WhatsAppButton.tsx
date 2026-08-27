@@ -9,10 +9,11 @@ export default function WhatsAppButton() {
       href={clinicInfo.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
       aria-label="Chat on WhatsApp"
+      className="fixed bottom-6 right-6 z-50 relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all"
     >
-      <MessageCircle size={28} />
+      <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60 animate-ping" />
+      <MessageCircle size={28} className="relative" />
     </a>
   );
 }
