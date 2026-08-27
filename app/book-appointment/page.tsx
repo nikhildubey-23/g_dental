@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Calendar, Clock, User, Phone, Mail, MessageSquare, CheckCircle } from "lucide-react";
 import { services, clinicInfo } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
@@ -56,12 +57,12 @@ export default function BookAppointmentPage() {
                   shortly to confirm your appointment.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
+                  <Link
                     href="/"
                     className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors"
                   >
                     Back to Home
-                  </a>
+                  </Link>
                   <a
                     href={clinicInfo.whatsappLink}
                     target="_blank"

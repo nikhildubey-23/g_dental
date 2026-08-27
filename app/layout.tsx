@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    { path: "../public/fonts/Inter-Light.ttf", weight: "300", style: "normal" },
+    { path: "../public/fonts/Inter-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../public/fonts/Inter-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../public/fonts/Inter-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../public/fonts/Inter-Bold.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-inter",
 });
 

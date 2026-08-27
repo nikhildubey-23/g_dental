@@ -144,7 +144,7 @@ export const services: Service[] = [
     icon: "lucide: Baby",
     benefits: [
       "Kid-friendly, welcoming environment",
-      "Gentle and耐心 approach",
+      "Gentle and patient approach",
       "Early detection of dental issues",
       "Preventive treatments (sealants, fluoride)",
       "Education on oral hygiene habits",
