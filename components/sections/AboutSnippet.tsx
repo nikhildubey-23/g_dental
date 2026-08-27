@@ -1,50 +1,42 @@
 "use client";
 
+import Link from "next/link";
 import { clinicInfo } from "@/lib/data";
-import ScrollFadeIn from "@/components/ScrollFadeIn";
-import Button from "@/components/ui/LegacyButton";
+import GlassCard from "@/components/ui/glass-card";
+import { Button } from "@/components/ui/button";
 
 export default function AboutSnippet() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <ScrollFadeIn direction="left">
-            <div className="relative">
-              <div className="aspect-[4/5] bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center text-primary">
-                    <div className="w-32 h-32 bg-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-4xl font-bold">DG</span>
-                    </div>
-                    <p className="font-semibold">{clinicInfo.doctor.name}</p>
-                    <p className="text-sm text-slate-500">{clinicInfo.doctor.degree}</p>
-                  </div>
-                </div>
+    <section className="relative overflow-hidden bg-surface py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative">
+            <GlassCard hover className="p-8 text-center">
+              <div className="mb-5 mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5 text-3xl font-extrabold text-primary">
+                DG
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-accent text-white px-6 py-3 rounded-xl font-bold shadow-lg">
+              <h3 className="text-xl font-bold text-slate-900">{clinicInfo.doctor.name}</h3>
+              <p className="text-slate-500">{clinicInfo.doctor.degree}</p>
+              <span className="mt-4 inline-block rounded-full bg-accent/15 px-4 py-1 text-sm font-semibold text-accent">
                 {clinicInfo.doctor.experience} Years Experience
-              </div>
-            </div>
-          </ScrollFadeIn>
+              </span>
+            </GlassCard>
+          </div>
 
-          <ScrollFadeIn direction="right" delay={0.2}>
-            <div>
-              <p className="text-primary font-semibold mb-2">About the Doctor</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Meet {clinicInfo.doctor.name}
-              </h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                {clinicInfo.doctor.bio}
-              </p>
-              <p className="text-slate-600 leading-relaxed mb-8">
-                With expertise in {clinicInfo.doctor.specialization}, Dr. Gouraha
-                combines advanced technology with a gentle, patient-first approach
-                to deliver exceptional dental care.
-              </p>
-              <Button href="/about">Learn More About Us</Button>
-            </div>
-          </ScrollFadeIn>
+          <div>
+            <span className="text-sm font-semibold uppercase tracking-wider text-primary">About the Doctor</span>
+            <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-slate-900">
+              Meet {clinicInfo.doctor.name}
+            </h2>
+            <p className="mt-5 text-slate-600 leading-relaxed">{clinicInfo.doctor.bio}</p>
+            <p className="mt-4 text-slate-600 leading-relaxed">
+              With expertise in {clinicInfo.doctor.specialization}, Dr. Gouraha combines advanced
+              technology with a gentle, patient-first approach.
+            </p>
+            <Button asChild className="mt-8 rounded-full bg-gradient-to-r from-primary to-primary-hover shadow-lg">
+              <Link href="/about">Learn More About Us</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
