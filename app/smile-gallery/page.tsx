@@ -70,8 +70,9 @@ export default function SmileGalleryPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item, index) => (
               <ScrollFadeIn key={item.id} delay={index * 0.1}>
-                <div
-                  className="group cursor-pointer"
+                <button
+                  type="button"
+                  className="group block w-full text-left cursor-pointer"
                   onClick={() => setSelectedItem(item)}
                 >
                   <GlassCard className="h-full p-0 overflow-hidden">
@@ -92,7 +93,7 @@ export default function SmileGalleryPage() {
                       <p className="text-sm text-slate-600">{item.description}</p>
                     </div>
                   </GlassCard>
-                </div>
+                </button>
               </ScrollFadeIn>
             ))}
           </div>
