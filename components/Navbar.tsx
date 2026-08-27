@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { navLinks, clinicInfo } from "@/lib/data";
 import Button from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import Button from "@/components/ui/Button";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,10 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <nav
@@ -58,7 +64,11 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isScrolled ? "text-slate-700" : "text-white/90"
+                  pathname === link.href
+                    ? "text-primary font-semibold"
+                    : isScrolled
+                      ? "text-slate-700"
+                      : "text-white/90"
                 }`}
               >
                 {link.label}
@@ -85,6 +95,8 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
             className={`md:hidden p-2 ${
               isScrolled ? "text-slate-900" : "text-white"
             }`}

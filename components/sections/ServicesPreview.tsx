@@ -1,19 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Smile, Stethoscope, AlignCenter, Sparkles, Baby, Shield, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
+import { resolveServiceIcon } from "@/lib/utils";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-
-const iconMap: Record<string, React.ElementType> = {
-  Smile,
-  Stethoscope,
-  AlignCenter,
-  Sparkles,
-  Baby,
-  Shield,
-};
+import Card from "@/components/ui/Card";
 
 export default function ServicesPreview() {
   return (
@@ -26,11 +19,11 @@ export default function ServicesPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            const Icon = iconMap[service.icon.split(": ")[1]] || Smile;
+            const Icon = resolveServiceIcon(service.icon);
             return (
               <ScrollFadeIn key={service.slug} delay={index * 0.1}>
                 <Link href={`/services/${service.slug}`}>
-                  <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group h-full">
+                  <Card hover className="h-full">
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                       <Icon size={28} className="text-primary group-hover:text-white" />
                     </div>
@@ -43,7 +36,7 @@ export default function ServicesPreview() {
                     <span className="inline-flex items-center gap-1 text-primary font-semibold group-hover:gap-2 transition-all">
                       Learn More <ArrowRight size={16} />
                     </span>
-                  </div>
+                  </Card>
                 </Link>
               </ScrollFadeIn>
             );

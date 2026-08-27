@@ -20,6 +20,10 @@ export default function BookAppointmentPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const text = encodeURIComponent(
+      `New Appointment Request\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nDate: ${formData.date}\nTime: ${formData.time}\nMessage: ${formData.message || "N/A"}`
+    );
+    window.open(`${clinicInfo.whatsappLink}?text=${text}`, "_blank");
     setSubmitted(true);
   };
 

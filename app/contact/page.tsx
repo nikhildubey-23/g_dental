@@ -16,6 +16,10 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const text = encodeURIComponent(
+      `New Contact Message\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email || "N/A"}\nMessage: ${formData.message}`
+    );
+    window.open(`${clinicInfo.whatsappLink}?text=${text}`, "_blank");
     setSubmitted(true);
   };
 

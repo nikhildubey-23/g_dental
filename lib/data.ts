@@ -36,7 +36,7 @@ export const services: Service[] = [
     title: "Dental Implants",
     shortDescription: "Permanent tooth replacement that looks and feels natural. Advanced implant technology for a confident smile.",
     description: "Dental implants are the gold standard for replacing missing teeth. They are titanium posts surgically placed into the jawbone, providing a strong foundation for replacement teeth that look, feel, and function like natural teeth. Our clinic uses advanced implant technology to ensure precise placement and long-lasting results.",
-    icon: "lucide: Smile",
+    icon: "Smile",
     benefits: [
       "Permanent and durable solution",
       "Natural look and feel",
@@ -62,7 +62,7 @@ export const services: Service[] = [
     title: "Root Canal Treatment",
     shortDescription: "Save your natural tooth with painless root canal treatment using advanced techniques.",
     description: "Root canal treatment saves a severely damaged or infected tooth by removing the pulp, cleaning and shaping the root canal, then filling and sealing it. Modern techniques make the procedure comfortable and efficient, preserving your natural tooth for years to come.",
-    icon: "lucide: Stethoscope",
+    icon: "Stethoscope",
     benefits: [
       "Saves your natural tooth",
       "Painless procedure with modern techniques",
@@ -89,7 +89,7 @@ export const services: Service[] = [
     title: "Braces & Orthodontics",
     shortDescription: "Straighten your teeth with metal braces, ceramic braces, or clear aligners.",
     description: "Orthodontic treatment corrects misaligned teeth, bite issues, and gaps using braces or clear aligners. We offer metal braces, ceramic braces, and invisible aligners to suit every lifestyle and budget. A beautiful, straight smile is within your reach at any age.",
-    icon: "lucide: AlignCenter",
+    icon: "AlignCenter",
     benefits: [
       "Straighter, more aligned teeth",
       "Improved bite and jaw alignment",
@@ -115,7 +115,7 @@ export const services: Service[] = [
     title: "Teeth Whitening",
     shortDescription: "Professional teeth whitening for a brighter, more confident smile in just one visit.",
     description: "Professional teeth whitening removes stains and discoloration, brightening your smile by several shades in just one session. We use safe, dentist-supervised whitening systems that deliver dramatic results without damaging your enamel.",
-    icon: "lucide: Sparkles",
+    icon: "Sparkles",
     benefits: [
       "Instantly brighter smile",
       "Safe and supervised procedure",
@@ -141,7 +141,7 @@ export const services: Service[] = [
     title: "Pediatric Dentistry",
     shortDescription: "Gentle, kid-friendly dental care to build healthy oral habits from an early age.",
     description: "Pediatric dentistry focuses on the oral health of children from infancy through adolescence. Our child-friendly environment and gentle approach make dental visits fun and stress-free, helping kids develop positive attitudes toward dental care that last a lifetime.",
-    icon: "lucide: Baby",
+    icon: "Baby",
     benefits: [
       "Kid-friendly, welcoming environment",
       "Gentle and patient approach",
@@ -167,7 +167,7 @@ export const services: Service[] = [
     title: "Oral Surgery",
     shortDescription: "Expert oral surgical procedures including wisdom tooth removal and jaw treatments.",
     description: "Oral surgery encompasses a range of surgical procedures performed in the mouth and jaw area. From wisdom tooth extraction to corrective jaw surgery, our experienced surgeon uses advanced techniques for faster healing and better outcomes.",
-    icon: "lucide: Shield",
+    icon: "Shield",
     benefits: [
       "Expert surgical care",
       "Advanced technology for precision",
