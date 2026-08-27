@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,6 +15,11 @@ const inter = localFont({
     { path: "../public/fonts/Inter-Bold.ttf", weight: "700", style: "normal" },
   ],
   variable: "--font-inter",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -42,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}>
       <body className="font-sans min-h-full flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
