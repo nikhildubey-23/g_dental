@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local task-orchestration / tooling state (not part of the shipped app)
+.superpowers/
+*.local
