@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { clinicInfo } from "@/lib/data";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/LegacyButton";
 
 export default function Hero() {
   return (

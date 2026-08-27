@@ -3,7 +3,7 @@ import { Award, Heart, Shield, Clock, Users, CheckCircle } from "lucide-react";
 import { clinicInfo } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/LegacyButton";
 
 export const metadata: Metadata = {
   title: "About Dr. Abhishek Gouraha | Gouraha Dant Chikitsalaya",

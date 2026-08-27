@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { navLinks, clinicInfo } from "@/lib/data";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/LegacyButton";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

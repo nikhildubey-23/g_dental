@@ -6,7 +6,7 @@ import { services } from "@/lib/data";
 import { resolveServiceIcon } from "@/lib/utils";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import Card from "@/components/ui/Card";
+import Card from "@/components/ui/LegacyCard";
 
 export default function ServicesPreview() {
   return (

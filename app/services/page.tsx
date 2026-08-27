@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { resolveServiceIcon } from "@/lib/utils";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card";
+import Button from "@/components/ui/LegacyButton";
+import Card from "@/components/ui/LegacyCard";
 
 export const metadata: Metadata = {
   title: "Our Services | Gouraha Dant Chikitsalaya",

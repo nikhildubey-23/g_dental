@@ -2,7 +2,7 @@
 
 import { clinicInfo } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/LegacyButton";
 
 export default function AboutSnippet() {
   return (

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Check, HelpCircle } from "lucide-react";
 import { services } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/LegacyButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
