@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Star, Phone, ArrowRight } from "lucide-react";
 import { clinicInfo, stats } from "@/lib/data";
 import Blobs from "@/components/Blobs";
@@ -33,12 +34,12 @@ export default function Hero() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="rounded-full bg-gradient-to-r from-accent to-accent-hover hover:opacity-95 shadow-lg">
-                  <a href="/book-appointment">
+                  <Link href="/book-appointment">
                     Book Appointment <ArrowRight size={18} />
-                  </a>
+                  </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full bg-white/60 backdrop-blur border-white/60 text-slate-700">
-                  <a href="/services">Our Services</a>
+                  <Link href="/services">Our Services</Link>
                 </Button>
               </div>
             </motion.div>

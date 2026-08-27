@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Calendar, Clock, User, Phone, Mail, MessageSquare, CheckCircle } from "lucide-react";
+import { Calendar, User, Phone, Mail, MessageSquare, CheckCircle } from "lucide-react";
 import { services, clinicInfo } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import Blobs from "@/components/Blobs";
