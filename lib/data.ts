@@ -14,7 +14,7 @@ export const clinicInfo = {
   whatsappLink: "https://wa.me/919685372425",
   hours: "Mon - Sat: 10:00 AM - 8:00 PM",
   email: "info@gourahadental.com",
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5!2!3d!1m2!1s0x0%3A0x0!2zNDk1MDA2!5m2!1m4!1s0x0%3A0x0!2zNDk1MDA2",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3150!2d82.1534016!3d22.0993603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a280b01e277faef%3A0xf4c136daa972a5b3!2sGouraha%20Dant%20Chikitsalaya!5e0!3m2!1sen!2sin!4v1700000000000",
   tagline: "Your Smile, Our Priority",
   subtitle: "Trusted Dental Care in Bilaspur, Chhattisgarh",
 };
