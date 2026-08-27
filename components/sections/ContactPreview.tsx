@@ -2,72 +2,54 @@
 
 import { MapPin, Phone, Clock } from "lucide-react";
 import { clinicInfo } from "@/lib/data";
-import SectionHeading from "@/components/ui/SectionHeading";
-import ScrollFadeIn from "@/components/ScrollFadeIn";
+import GlassCard from "@/components/ui/glass-card";
 
 export default function ContactPreview() {
+  const items = [
+    { Icon: MapPin, label: "Address", value: clinicInfo.address },
+    { Icon: Phone, label: "Phone", value: clinicInfo.phone, href: `tel:${clinicInfo.phoneLink}` },
+    { Icon: Clock, label: "Hours", value: clinicInfo.hours },
+  ];
+
   return (
     <section className="py-20 bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Visit Us"
-          subtitle="We'd love to see you at our clinic"
-        />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Visit Us</h2>
+          <span className="mx-auto mt-5 block h-1 w-20 rounded-full bg-gradient-to-r from-primary to-accent" />
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <ScrollFadeIn>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin className="text-primary" size={24} />
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="flex flex-col gap-6">
+            {items.map(({ Icon, label, value, href }) => (
+              <GlassCard key={label} hover className="flex items-start gap-4 p-6">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/10 to-primary/20 text-primary">
+                  <Icon size={24} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Address</h3>
-                  <p className="text-slate-600">{clinicInfo.address}</p>
+                  <h3 className="font-semibold text-slate-900">{label}</h3>
+                  {href ? (
+                    <a href={href} className="text-slate-600 hover:text-primary">{value}</a>
+                  ) : (
+                    <p className="text-slate-600">{value}</p>
+                  )}
                 </div>
-              </div>
+              </GlassCard>
+            ))}
+          </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                  <Phone className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
-                  <a
-                    href={`tel:${clinicInfo.phoneLink}`}
-                    className="text-slate-600 hover:text-primary transition-colors"
-                  >
-                    {clinicInfo.phone}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                  <Clock className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Hours</h3>
-                  <p className="text-slate-600">{clinicInfo.hours}</p>
-                </div>
-              </div>
-            </div>
-          </ScrollFadeIn>
-
-          <ScrollFadeIn delay={0.2}>
-            <div className="rounded-2xl overflow-hidden shadow-sm h-80 bg-slate-200">
-              <iframe
-                src={clinicInfo.mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Clinic Location"
-              />
-            </div>
-          </ScrollFadeIn>
+          <GlassCard className="overflow-hidden p-2">
+            <iframe
+              src={clinicInfo.mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: "320px" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Clinic Location"
+            />
+          </GlassCard>
         </div>
       </div>
     </section>
