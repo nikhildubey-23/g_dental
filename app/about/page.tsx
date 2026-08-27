@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Award, Heart, Shield, Clock, Users, CheckCircle } from "lucide-react";
+import { Award, Heart, Shield, Clock, Users, CheckCircle, MapPin } from "lucide-react";
 import { clinicInfo } from "@/lib/data";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/LegacyButton";
+import Blobs from "@/components/Blobs";
+import GlassCard from "@/components/ui/glass-card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "About Dr. Abhishek Gouraha | Gouraha Dant Chikitsalaya",
@@ -29,10 +32,11 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About the Doctor</h1>
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
+      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-sky-50 pt-28 pb-16">
+        <Blobs />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900">About the Doctor</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             Dedicated to creating healthy, beautiful smiles for over {clinicInfo.doctor.experience} years
           </p>
         </div>
@@ -40,18 +44,16 @@ export default function AboutPage() {
 
       {/* Doctor Profile */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <ScrollFadeIn>
-              <div className="aspect-square bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center">
-                <div className="text-center text-primary">
-                  <div className="w-40 h-40 bg-primary/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <span className="text-5xl font-bold">DG</span>
-                  </div>
-                  <p className="text-xl font-bold">{clinicInfo.doctor.name}</p>
-                  <p className="text-slate-500">{clinicInfo.doctor.degree}</p>
+              <GlassCard hover className="p-8 text-center">
+                <div className="mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/5">
+                  <span className="text-5xl font-bold text-primary">DG</span>
                 </div>
-              </div>
+                <p className="text-xl font-bold text-slate-900">{clinicInfo.doctor.name}</p>
+                <p className="text-slate-500">{clinicInfo.doctor.degree}</p>
+              </GlassCard>
             </ScrollFadeIn>
 
             <ScrollFadeIn delay={0.2}>
@@ -69,16 +71,21 @@ export default function AboutPage() {
                 </p>
 
                 <h3 className="font-bold text-slate-900 mb-4">Qualifications</h3>
-                <ul className="space-y-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {qualifications.map((qual) => (
-                    <li key={qual} className="flex items-center gap-2 text-slate-600">
-                      <CheckCircle size={18} className="text-primary shrink-0" />
+                    <Badge
+                      key={qual}
+                      className="gap-1.5 bg-primary/10 text-primary px-3 py-1.5 font-medium"
+                    >
+                      <CheckCircle size={14} />
                       {qual}
-                    </li>
+                    </Badge>
                   ))}
-                </ul>
+                </div>
 
-                <Button href="/book-appointment">Book Consultation</Button>
+                <Button asChild className="rounded-full bg-gradient-to-r from-primary to-primary-hover shadow-lg">
+                  <a href="/book-appointment">Book Consultation</a>
+                </Button>
               </div>
             </ScrollFadeIn>
           </div>
@@ -87,37 +94,59 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="py-20 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title="Our Values" subtitle="What drives us every day" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <ScrollFadeIn key={value.title} delay={index * 0.1}>
-                <div className="bg-white rounded-xl p-8 text-center shadow-sm h-full">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <value.icon className="text-primary" size={28} />
+                <GlassCard hover className="h-full p-8 text-center">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 text-primary">
+                    <value.icon size={28} />
                   </div>
                   <h3 className="font-bold text-slate-900 mb-2">{value.title}</h3>
                   <p className="text-slate-600 text-sm">{value.description}</p>
-                </div>
+                </GlassCard>
               </ScrollFadeIn>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Visit Us / Map */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading title="Visit Us" subtitle="Find us in Bilaspur, Chhattisgarh" />
+          <GlassCard hover className="overflow-hidden p-2">
+            <iframe
+              src={clinicInfo.mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: "400px", borderRadius: "0.75rem" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Clinic Location"
+            />
+          </GlassCard>
+        </div>
+      </section>
+
       {/* Clinic CTA */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-sky-50 py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center">
           <ScrollFadeIn>
-            <Users className="text-white/30 mx-auto mb-6" size={48} />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <Users className="mx-auto mb-6 text-primary/40" size={48} />
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
               Join Our Happy Patients
             </h2>
-            <p className="text-white/80 text-lg mb-8">
+            <p className="text-slate-600 text-lg mb-8">
               Experience the difference of personalized, expert dental care.
             </p>
-            <Button href="/book-appointment" size="lg">
-              Schedule Your Visit
+            <Button asChild size="lg" className="rounded-full bg-gradient-to-r from-accent to-accent-hover text-white shadow-lg">
+              <a href="/book-appointment">
+                <MapPin size={18} />
+                Schedule Your Visit
+              </a>
             </Button>
           </ScrollFadeIn>
         </div>

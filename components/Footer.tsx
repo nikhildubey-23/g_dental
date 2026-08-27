@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Clock, Mail } from "lucide-react";
 import { clinicInfo, navLinks, services } from "@/lib/data";
+import NewsletterForm from "@/components/ui/NewsletterForm";
 
 export default function Footer() {
   return (
@@ -55,16 +56,7 @@ export default function Footer() {
               <li className="flex gap-3"><Clock size={18} className="shrink-0" /> {clinicInfo.hours}</li>
               <li><a href={`mailto:${clinicInfo.email}`} className="flex gap-3 hover:text-primary"><Mail size={18} className="shrink-0" /> {clinicInfo.email}</a></li>
             </ul>
-            <form className="mt-5 flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 rounded-full border border-teal-200 bg-white/70 px-4 py-2 text-sm outline-none focus:border-primary"
-              />
-              <button className="rounded-full bg-gradient-to-r from-primary to-primary-hover px-4 py-2 text-sm font-medium text-white">
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
